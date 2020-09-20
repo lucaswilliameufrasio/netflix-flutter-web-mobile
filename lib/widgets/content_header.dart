@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_netflix_responsive_ui/models/models.dart';
 import 'package:flutter_netflix_responsive_ui/widgets/widgets.dart';
 import 'package:video_player/video_player.dart';
@@ -7,10 +6,8 @@ import 'package:video_player/video_player.dart';
 class ContentHeader extends StatelessWidget {
   final Content featuredContent;
 
-  const ContentHeader({
-    Key key,
-    @required this.featuredContent,
-  }) : super(key: key);
+  const ContentHeader({Key key, @required this.featuredContent})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,10 +21,7 @@ class ContentHeader extends StatelessWidget {
 class _ContentHeaderMobile extends StatelessWidget {
   final Content featuredContent;
 
-  const _ContentHeaderMobile({
-    Key key,
-    @required this.featuredContent,
-  }) : super(key: key);
+  const _ContentHeaderMobile({Key key, this.featuredContent}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,11 +31,10 @@ class _ContentHeaderMobile extends StatelessWidget {
         Container(
           height: 500.0,
           decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(featuredContent.imageUrl),
-              fit: BoxFit.cover,
-            ),
-          ),
+              image: DecorationImage(
+            image: AssetImage(featuredContent.imageUrl),
+            fit: BoxFit.cover,
+          )),
         ),
         Container(
           height: 500.0,
@@ -80,7 +73,7 @@ class _ContentHeaderMobile extends StatelessWidget {
               ),
             ],
           ),
-        ),
+        )
       ],
     );
   }
@@ -89,10 +82,8 @@ class _ContentHeaderMobile extends StatelessWidget {
 class _ContentHeaderDesktop extends StatefulWidget {
   final Content featuredContent;
 
-  const _ContentHeaderDesktop({
-    Key key,
-    @required this.featuredContent,
-  }) : super(key: key);
+  const _ContentHeaderDesktop({Key key, this.featuredContent})
+      : super(key: key);
 
   @override
   __ContentHeaderDesktopState createState() => __ContentHeaderDesktopState();
@@ -168,7 +159,9 @@ class __ContentHeaderDesktopState extends State<_ContentHeaderDesktop> {
                   width: 250.0,
                   child: Image.asset(widget.featuredContent.titleImageUrl),
                 ),
-                const SizedBox(height: 15.0),
+                const SizedBox(
+                  height: 15.0,
+                ),
                 Text(
                   widget.featuredContent.description,
                   style: const TextStyle(
@@ -180,15 +173,19 @@ class __ContentHeaderDesktopState extends State<_ContentHeaderDesktop> {
                         color: Colors.black,
                         offset: Offset(2.0, 4.0),
                         blurRadius: 6.0,
-                      ),
+                      )
                     ],
                   ),
                 ),
-                const SizedBox(height: 20.0),
+                const SizedBox(
+                  height: 20.0,
+                ),
                 Row(
                   children: [
                     _PlayButton(),
-                    const SizedBox(width: 16.0),
+                    const SizedBox(
+                      width: 16.0,
+                    ),
                     FlatButton.icon(
                       padding:
                           const EdgeInsets.fromLTRB(25.0, 10.0, 30.0, 10.0),
@@ -203,7 +200,9 @@ class __ContentHeaderDesktopState extends State<_ContentHeaderDesktop> {
                         ),
                       ),
                     ),
-                    const SizedBox(width: 20.0),
+                    const SizedBox(
+                      width: 16.0,
+                    ),
                     if (_videoController.value.initialized)
                       IconButton(
                         icon: Icon(
@@ -217,9 +216,9 @@ class __ContentHeaderDesktopState extends State<_ContentHeaderDesktop> {
                               : _videoController.setVolume(0);
                           _isMuted = _videoController.value.volume == 0;
                         }),
-                      ),
+                      )
                   ],
-                ),
+                )
               ],
             ),
           ),
@@ -238,14 +237,15 @@ class _PlayButton extends StatelessWidget {
           : const EdgeInsets.fromLTRB(25.0, 10.0, 30.0, 10.0),
       onPressed: () => print('Play'),
       color: Colors.white,
-      icon: const Icon(Icons.play_arrow, size: 30.0),
-      label: const Text(
-        'Play',
-        style: TextStyle(
-          fontSize: 16.0,
-          fontWeight: FontWeight.w600,
-        ),
+      icon: const Icon(
+        Icons.play_arrow,
+        size: 30.0,
       ),
+      label: const Text('Play',
+          style: TextStyle(
+            fontSize: 16.0,
+            fontWeight: FontWeight.w600,
+          )),
     );
   }
 }

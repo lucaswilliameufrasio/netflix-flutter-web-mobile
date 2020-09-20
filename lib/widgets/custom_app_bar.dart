@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_netflix_responsive_ui/widgets/responsive.dart';
 
-import 'package:flutter_netflix_responsive_ui/assets.dart';
-import 'package:flutter_netflix_responsive_ui/widgets/widgets.dart';
+import '../assets.dart';
 
 class CustomAppBar extends StatelessWidget {
   final double scrollOffset;
@@ -14,17 +14,13 @@ class CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(
-        vertical: 10.0,
-        horizontal: 24.0,
-      ),
-      color:
-          Colors.black.withOpacity((scrollOffset / 350).clamp(0, 1).toDouble()),
-      child: Responsive(
-        mobile: _CustomAppBarMobile(),
-        desktop: _CustomAppBarDesktop(),
-      ),
-    );
+        padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 24.0),
+        color: Colors.black
+            .withOpacity((scrollOffset / 350).clamp(0, 1).toDouble()),
+        child: Responsive(
+          mobile: _CustomAppBarMobile(),
+          desktop: _CustomAppBarDesktop(),
+        ));
   }
 }
 
@@ -35,7 +31,9 @@ class _CustomAppBarMobile extends StatelessWidget {
       child: Row(
         children: [
           Image.asset(Assets.netflixLogo0),
-          const SizedBox(width: 12.0),
+          const SizedBox(
+            width: 12.0,
+          ),
           Expanded(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -54,7 +52,7 @@ class _CustomAppBarMobile extends StatelessWidget {
                 ),
               ],
             ),
-          ),
+          )
         ],
       ),
     );
@@ -68,7 +66,9 @@ class _CustomAppBarDesktop extends StatelessWidget {
       child: Row(
         children: [
           Image.asset(Assets.netflixLogo1),
-          const SizedBox(width: 12.0),
+          const SizedBox(
+            height: 12.0,
+          ),
           Expanded(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
